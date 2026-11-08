@@ -46,10 +46,16 @@ Data: 8 novembre 2026 · Stato: **completata in attesa di approvazione**
 
 ## Verifiche fatte da me
 
-- `npm run build` completa senza errori.
-- `npm test` (Vitest) parte e non trova test: atteso in questa fase.
-- Le icone si aprono e sono leggibili a 192px (controllate anche a 512px).
+- `npm run build` completa senza errori (`dist/` con path riscritti su `/gym-timer/`).
+- `npm test` — 2 test verdi (test di sanità della catena Vite→Vitest, non ancora logica del timer).
+- `npx tsc --noEmit` pulito.
+- Le icone si aprono e sono leggibili (controllate a 512px e a 192px).
 - `manifest.webmanifest` valido come JSON, con 192 + 512 + maskable.
+- **Deploy reale verificato:** run GitHub Actions concluso con successo e sito raggiungibile
+  su https://mcarame.github.io/gym-timer/ — index, manifest e tutte e 4 le icone rispondono
+  `200`. SHA locale e SHA sul server coincidono (`cbc5402`).
+- `https_enforced: true` su Pages (l'app deve stare su HTTPS, altrimenti niente service worker
+  né wake lock).
 
 ## Verifiche che può fare solo l'utente
 

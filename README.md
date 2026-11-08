@@ -7,8 +7,9 @@ cicli → defaticamento, con beep di preavviso 3-2-1. Si installa sulla home scr
 da Safari e si apre a schermo intero, senza App Store e senza account Apple Developer.
 Funziona offline dopo il primo caricamento.
 
-> **Stato del progetto:** Fase 0 (setup). Lo scheletro gira, l'app vera arriva nelle fasi
-> successive. Vedi `docs/FASE-0.md` per cosa è stato deciso e perché.
+> **Stato del progetto:** Fase 0 (setup) completata. Lo scheletro è online su
+> **https://mcarame.github.io/gym-timer/** — per ora è solo la pagina di prova: il timer arriva
+> dalla Fase 2. Vedi `docs/FASE-0.md` per cosa è stato deciso e perché.
 
 ## Requisiti
 
