@@ -1,0 +1,79 @@
+/* Palette "Ripeti" — solo tema dark.
+   I colori di fase NON sono decorativi: servono a capire da 2-3 metri se stai
+   lavorando o riposando. Ogni fase ha un colore e il numero resta sempre bianco
+   (massimo contrasto sul dato che conta: il tempo). */
+:root {
+  --bg: #0b0d0e;
+  --surface: #14181a;
+  --text: #f5f7f5;
+  --text-dim: #8b9694;
+  --work: #c6ff3d;      /* lavoro: verde acido */
+  --rest: #4da3ff;      /* riposo: azzurro */
+  --prep: #ffb020;      /* preparazione: ambra */
+  --accent-line: #232a2c;
+
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  /* font di sistema: zero download, resa nativa su iOS */
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+  /* niente rimbalzo elastico: in standalone iOS lo scroll elastico sposta i numeri */
+  overscroll-behavior: none;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#app {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  /* safe area: notch/Dynamic Island in alto, home indicator in basso.
+     Con viewport-fit=cover il contenuto ci finirebbe sotto. */
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom)
+    env(safe-area-inset-left);
+}
+
+.placeholder {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+  padding: 24px;
+}
+
+.placeholder h1 {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.placeholder p {
+  color: var(--text-dim);
+  font-size: 15px;
+  margin: 0;
+}
+
+/* Numeri del countdown: cifre tabulari, così il numero non "balla" cambiando cifra. */
+.countdown {
+  font-size: clamp(96px, 38vmin, 260px);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}

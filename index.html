@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <!-- viewport-fit=cover: senza questo, su iPhone il contenuto non arriva sotto la
+         Dynamic Island e il padding di safe-area non ha effetto. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Ripeti — timer a intervalli</title>
+    <meta name="description" content="Timer a intervalli per allenamento. Installabile su iPhone, funziona offline." />
+
+    <!-- Tema: solo dark. theme-color = colore della barra di stato in standalone. -->
+    <meta name="theme-color" content="#0B0D0E" />
+    <meta name="color-scheme" content="dark" />
+
+    <!-- iOS: apre come web app standalone (senza barre Safari) e senza ritardi sul tap. -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Ripeti" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon-180.png" />
+
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href="/icons/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

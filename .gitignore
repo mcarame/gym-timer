@@ -1,0 +1,16 @@
+# Dipendenze e build
+node_modules/
+dist/
+.vite/
+
+# Credenziali: non devono MAI finire nel repository (vedi docs/DECISIONS.md)
+.git-token
+
+# Test e report
+coverage/
+test-results/
+playwright-report/
+
+# Sistema
+.DS_Store
+*.local

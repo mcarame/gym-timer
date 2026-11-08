@@ -1,0 +1,57 @@
+name: Deploy to GitHub Pages
+
+# Quando parte: a ogni push su main. Non su pull request, perché qui non si usano.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}   # permette anche l'avvio manuale dalla scheda Actions
+
+# Permessi minimi necessari a pubblicare su Pages (niente token a mano).
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Se fai due push ravvicinati, lascia finire il deploy in corso invece di annullarlo
+# a metà pubblicazione.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type-check and unit tests
+        run: |
+          npx tsc --noEmit
+          npm test
+
+      - name: Build
+        run: npm run build
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build          # se i test o la build falliscono, il sito NON viene aggiornato
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
